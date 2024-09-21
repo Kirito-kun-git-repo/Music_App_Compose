@@ -1,5 +1,6 @@
 package ir.ehsan.asmrmusicplayer
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,11 +8,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.keyframes
-import androidx.compose.animation.core.repeatable
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -67,7 +63,6 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
@@ -84,6 +79,7 @@ class MainActivity : ComponentActivity() {
 
     lateinit var player:ExoPlayer
 
+    @SuppressLint("RestrictedApi")
     @OptIn(ExperimentalFoundationApi::class, ExperimentalAnimationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -146,36 +142,22 @@ class MainActivity : ComponentActivity() {
                     uiController.setNavigationBarColor(animatedDarkColor)
 
                     val musics = listOf(
+
                         Music(
-                            name = "Petrichor",
+                            name = "Brotherhood",
                             cover = R.drawable.cover1,
                             music = R.raw.music1
                         ),
                         Music(
-                            name = "Love Story",
+                            name = "Suniyan ",
                             cover = R.drawable.cover2,
                             music = R.raw.music2
                         ),
                         Music(
-                            name = "GoodBye",
+                            name = "Guilty Crown",
                             cover = R.drawable.cover3,
                             music = R.raw.music3
-                        ),
-                        Music(
-                            name = "Petrichor",
-                            cover = R.drawable.cover1,
-                            music = R.raw.music1
-                        ),
-                        Music(
-                            name = "Love Story",
-                            cover = R.drawable.cover2,
-                            music = R.raw.music2
-                        ),
-                        Music(
-                            name = "GoodBye",
-                            cover = R.drawable.cover3,
-                            music = R.raw.music3
-                        ),
+                        )
                     )
 
                     val pagerState = rememberPagerState(pageCount = { musics.count() })
